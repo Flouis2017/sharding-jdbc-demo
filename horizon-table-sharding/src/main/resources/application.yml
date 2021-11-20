@@ -29,6 +29,16 @@ spring:
             inline:
               sharding-column: id # 此处配置根据哪个字段进行分表
               algorithm-expression: course_$->{id % 2} # 分表规则
+        # 单库单表配置（也叫“专库专表”）
+#        t_user:
+#          actual-data-nodes: m1.t_user
+#          key-generator:
+#            column: id
+#            type: SNOWFLAKE
+#          table-strategy:
+#            inline:
+#              sharding-column: id
+#              algorithm-expression: t_user
     # 执行sql打印配置
     props:
       sql:

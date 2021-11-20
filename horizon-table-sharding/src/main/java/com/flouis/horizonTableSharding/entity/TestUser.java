@@ -1,15 +1,19 @@
 package com.flouis.horizonTableSharding.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 @Data
-public class Course {
+@TableName(value = "t_user")
+public class TestUser {
 
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
-    private String csName;
-    private Integer state;
+
+    private String theName;
+    private Integer age;
+    private Integer gender;
 
 }
