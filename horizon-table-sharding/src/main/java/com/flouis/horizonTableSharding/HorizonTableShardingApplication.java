@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.flouis.horizonTableSharding.dao")
+@MapperScan("com.flouis.horizonTableSharding.mapper")
 public class HorizonTableShardingApplication {
 
 	public static void main(String[] args) {

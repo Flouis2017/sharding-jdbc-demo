@@ -1,24 +1,39 @@
-
 server:
   port: 9090
 
 spring:
-  # 数据源配置
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://122.51.145.185:3306/sharding-jdbc-demo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimeZone=Asia/Shanghai
-    username: root
-    password: root
-  # 日期格式化
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
+  # 配置：开启一个实体类映射多个数据库表
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    datasource:
+      # 数据库别名配置，如果有多个数据库使用“,”
+      names: m1
+      # 数据源配置：包括数据库连接池、驱动、地址、用户名和密码
+      m1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        drive-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://122.51.145.185:3306/sharding-jdbc-demo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimeZone=Asia/Shanghai
+        username: root
+        password: root
+    sharding:
+      tables:
+        course: # 表名公因式：如分表为course_0和course_1，那么此项为”course“
+          actual-data-nodes: m1.course_$->{0..1} # 数据库表分布配置
+          # 主键生成策略：
+          key-generator:
+            column: id # 主键字段
+            type: SNOWFLAKE # 指定主键生成策略为雪花算法
+          # 分片策略
+          table-strategy:
+            inline:
+              sharding-column: id # 此处配置根据哪个字段进行分表
+              algorithm-expression: course_$->{id % 2} # 分表规则
+    # 执行sql打印配置
+    props:
+      sql:
+        show: true
 
-# mybatis配置
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.flouis.horizonTableSharding.entity
 
 
 

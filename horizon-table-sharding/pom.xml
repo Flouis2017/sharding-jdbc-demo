@@ -24,16 +24,22 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
-		<!-- druid-数据库连接 -->
+		<!-- druid-数据库连接池 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
+			<artifactId>druid</artifactId>
 		</dependency>
 
-		<!-- mybatis -->
+		<!-- mybatis-plus -->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+
+		<!-- sharding-jdbc -->
+		<dependency>
+			<groupId>org.apache.shardingsphere</groupId>
+			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -29,6 +29,9 @@
 		<alibaba-druid.version>1.2.6</alibaba-druid.version>
 		<mybatis.version>2.2.0</mybatis.version>
 		<pagehelper.version>1.4.0</pagehelper.version>
+		<sharding-jdbc.version>4.1.1</sharding-jdbc.version>
+		<mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+		<fastjson.version>1.2.78</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -56,14 +59,21 @@
 			<artifactId>hutool-all</artifactId>
 			<version>${hutool.version}</version>
 		</dependency>
+
+		<!-- alibaba-fastjson json工具 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- druid-数据库连接 -->
+			<!-- druid-数据库连接池 -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
-				<artifactId>druid-spring-boot-starter</artifactId>
+				<artifactId>druid</artifactId>
 				<version>${alibaba-druid.version}</version>
 			</dependency>
 
@@ -79,6 +89,20 @@
 				<groupId>com.github.pagehelper</groupId>
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
 				<version>${pagehelper.version}</version>
+			</dependency>
+
+			<!-- sharding-jdbc -->
+			<dependency>
+				<groupId>org.apache.shardingsphere</groupId>
+				<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+				<version>${sharding-jdbc.version}</version>
+			</dependency>
+
+			<!-- mybatis-plus -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
