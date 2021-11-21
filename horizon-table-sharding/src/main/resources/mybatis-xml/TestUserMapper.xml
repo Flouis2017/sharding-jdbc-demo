@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.flouis.horizonTableSharding.mapper.TestUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.flouis.horizonTableSharding.entity.TestUser">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="the_name" jdbcType="VARCHAR" property="theName" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, the_name, age, gender
+    </sql>
+
+    <select id="findPage" parameterType="com.flouis.horizonTableSharding.vo.TestUserSearchVo" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from t_user
+        <where>
+            <if test="theName != null">
+                and the_name like concat('%', #{theName}, '%')
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+        </where>
+    </select>
+
+</mapper>

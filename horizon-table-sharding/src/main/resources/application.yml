@@ -42,8 +42,12 @@ spring:
     # 执行sql打印配置
     props:
       sql:
-        show: true
+        show: false
 
-
+# mybatis-plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:mybatis-xml/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
